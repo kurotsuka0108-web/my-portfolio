@@ -1,0 +1,470 @@
+/* ============================================
+   main.css - メインスタイル
+   
+   このファイルには以下が含まれます:
+   - ヒーローセクション
+   - 料金プランセクション
+   - 無料体験フォーム
+   - フッター
+   - ボタンスタイル
+   - レスポンシブデザイン
+   ============================================ */
+
+/* ============================================
+   ヒーローセクション（トップビュー）
+   背景画像: Unsplashの商用利用可能なフリー画像を使用
+   画像URL: https://images.unsplash.com/photo-1740895307920-0ba63bffc1c9
+   ============================================ */
+.hero {
+  height: 100vh;                    /* 画面の高さいっぱい */
+  background-image: url('https://images.unsplash.com/photo-1740895307920-0ba63bffc1c9?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;     /* パララックス効果 */
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* 背景画像の上にオーバーレイを追加（テキストの可読性向上） */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);  /* 半透明の黒いオーバーレイ */
+  z-index: 0;
+}
+
+/* ヒーローコンテンツを前面に表示 */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ヒーローコンテンツ */
+.hero-content {
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.hero-content h1 span {
+  color: var(--accent-gold);
+  display: block;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 40px;
+}
+
+/* ============================================
+   フェードインアニメーション
+   .fade-in-upクラスがついた要素がスクロール時に表示されます
+   script.jsで制御されます
+   ============================================ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   セクションタイトル
+   ============================================ */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: var(--text-primary);
+}
+
+.section-title-white {
+  color: #fff;
+}
+
+/* ============================================
+   料金プランセクション
+   ============================================ */
+.pricing {
+  padding: 100px 0;
+  background: var(--surface-color);
+}
+
+/* プランカードのグリッドレイアウト */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* プランカード */
+.plan-card {
+  background: var(--bg-color);
+  padding: 40px;
+  border: 1px solid #333;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+}
+
+.plan-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-10px);
+}
+
+/* おすすめプラン（強調表示） */
+.plan-card.recommended {
+  border: 2px solid var(--accent-gold);
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.plan-card.recommended:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+/* おすすめバッジ */
+.plan-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-gold);
+  color: #000;
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+
+/* プラン名 */
+.plan-name {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-secondary);
+}
+
+/* プラン料金 */
+.plan-price {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* PREMIUMプランの料金（ゴールド色） */
+.plan-price-premium {
+  color: var(--accent-gold);
+}
+
+/* プランの特徴リスト */
+.plan-features {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.plan-features li {
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+/* ============================================
+   ボタンスタイル
+   ============================================ */
+.btn {
+  display: inline-block;
+  padding: 15px 40px;
+  background: var(--accent-gold);
+  color: #000;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: #b8941f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* 標準プラン用ボタン（ダーク） */
+.btn-standard {
+  margin-top: 20px;
+  background: #333;
+  color: #fff;
+}
+
+.btn-standard:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* PREMIUMプラン用ボタン（ゴールド） */
+.btn-premium {
+  margin-top: 20px;
+}
+
+/* フォーム送信ボタン */
+.btn-submit {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ============================================
+   無料体験フォームセクション
+   背景画像を追加する場合:
+   .trial-form-section { background-image: url('images/form-bg.jpg'); }
+   ============================================ */
+.trial-form-section {
+  padding: 100px 0;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* フォームラッパー（ガラスモーフィズム効果） */
+.form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* フォーム説明文 */
+.form-description {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+/* フォームグループ */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* フォーム入力欄 */
+.form-control {
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: 0.3s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.form-control::placeholder {
+  color: #888;
+}
+
+/* ============================================
+   日時選択フィールド（日付と時間を別々に）
+   ============================================ */
+.datetime-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.datetime-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.datetime-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.datetime-input {
+  width: 100%;
+  cursor: pointer;
+}
+
+/* 日付・時間入力のポップアップスタイル調整 */
+.datetime-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.datetime-input::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* モバイルでの日時選択レイアウト */
+@media (max-width: 768px) {
+  .datetime-group {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ============================================
+   フッター
+   ============================================ */
+footer {
+  background: #000;
+  padding: 50px 0;
+  border-top: 1px solid #222;
+}
+
+/* フッターコンテンツ（3カラムグリッド） */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+/* フッター情報カラム */
+.footer-info h4 {
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.footer-description {
+  color: #888;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+/* 連絡先アイテム */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+/* コピーライト */
+.copyright {
+  text-align: center;
+  margin-top: 50px;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   レスポンシブデザイン（モバイル対応）
+   ============================================ */
+@media (max-width: 768px) {
+  /* ヒーローセクション */
+  .hero .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  /* ナビゲーションはbase.cssでモバイルスタイルを定義 */
+  
+  /* 料金プラン */
+  .plan-card.recommended {
+    transform: none;
+    margin: 20px 0;
+  }
+  
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* フォーム */
+  .form-wrapper {
+    padding: 30px 20px;
+  }
+  
+  /* セクションタイトル */
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  /* フッター */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* ============================================
+   タブレットサイズ（769px - 1024px）
+   ============================================ */
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* 料金プラン: 3列のグリッドで横並び表示 */
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* おすすめプランも通常のサイズで表示 */
+  .plan-card.recommended {
+    transform: scale(1.02);  /* 少しだけ大きく（強調効果を維持） */
+    z-index: 10;
+  }
+  
+  .plan-card.recommended:hover {
+    transform: scale(1.02) translateY(-10px);
+  }
+  
+  /* プランカードのパディングを少し調整 */
+  .plan-card {
+    padding: 30px 20px;
+  }
+  
+  /* プラン料金のフォントサイズを調整 */
+  .plan-price {
+    font-size: 2.5rem;
+  }
+}

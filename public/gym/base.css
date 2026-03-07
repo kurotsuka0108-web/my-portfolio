@@ -1,0 +1,261 @@
+/* ============================================
+   base.css - ベーススタイル
+   
+   このファイルには以下が含まれます:
+   - CSS変数（カラーテーマ）
+   - リセットスタイル
+   - 基本タイポグラフィ
+   - コンテナ
+   - ヘッダー・ナビゲーション
+   ============================================ */
+
+/* ============================================
+   CSS変数（カラーテーマ）
+   色やサイズを変更する場合は、ここを編集してください
+   ============================================ */
+:root {
+  /* 背景色 */
+  --bg-color: #0f0f0f;              /* メイン背景色（黒） */
+  --surface-color: #1a1a1a;         /* セクション背景色（濃いグレー） */
+  
+  /* テキスト色 */
+  --text-primary: #ffffff;          /* メインテキスト色（白） */
+  --text-secondary: #a0a0a0;        /* サブテキスト色（グレー） */
+  
+  /* アクセントカラー */
+  --accent-gold: #D4AF37;           /* ゴールド（ボタン、強調部分） */
+  
+  /* トランジション */
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  
+  /* レイアウト */
+  --container-max: 1100px;          /* コンテナの最大幅 */
+}
+
+/* ============================================
+   リセットスタイル
+   ブラウザのデフォルトスタイルをリセット
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* ============================================
+   基本ボディスタイル
+   フォント、背景色、テキスト色を設定
+   ============================================ */
+body {
+  font-family: 'Noto Sans JP', sans-serif;  /* 日本語フォント */
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;  /* 横スクロールを防止 */
+}
+
+/* ============================================
+   英語見出し用フォント
+   h1, h2, h3 と .en-font クラスに適用
+   ============================================ */
+h1, h2, h3, .en-font {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;        /* 大文字に変換 */
+  letter-spacing: 0.05em;           /* 文字間隔 */
+}
+
+/* ============================================
+   コンテナ
+   コンテンツの最大幅を制限し、中央揃え
+   ============================================ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   ヘッダー（固定ナビゲーション）
+   スクロール時に背景が変化します（script.jsで制御）
+   ============================================ */
+header {
+  position: fixed;                  /* 固定表示 */
+  top: 0;
+  width: 100%;
+  z-index: 1000;                   /* 最前面に表示 */
+  padding: 20px 0;
+  transition: var(--transition);
+}
+
+/* スクロール時のヘッダースタイル（script.jsで.scrolledクラスを追加） */
+header.scrolled {
+  background: rgba(15, 15, 15, 0.95);
+  padding: 10px 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ヘッダー内のナビゲーションコンテナ */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ロゴスタイル */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--accent-gold);
+}
+
+/* ナビゲーション */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-gold);
+}
+
+/* ヘッダーのCTAボタン（無料体験ボタン） */
+.header-cta {
+  background: transparent;
+  border: 2px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.header-cta:hover {
+  background: var(--accent-gold);
+  color: #000;
+}
+
+/* ============================================
+   ハンバーガーメニューボタン
+   デスクトップでは非表示、モバイルで表示
+   ============================================ */
+.menu-toggle {
+  display: none;                    /* デフォルトでは非表示 */
+  background: transparent;
+  border: 2px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: var(--transition);
+  z-index: 1001;
+}
+
+.menu-toggle:hover {
+  background: var(--accent-gold);
+  color: #000;
+}
+
+.menu-toggle-icon {
+  display: block;
+}
+
+/* メニューが開いている時のボタンスタイル */
+.menu-toggle[aria-expanded="true"] {
+  background: var(--accent-gold);
+  color: #000;
+}
+
+/* ============================================
+   モバイルメニューのスタイル
+   モバイルサイズでのみ表示される
+   上から下にドロップダウン形式
+   ============================================ */
+@media (max-width: 768px) {
+  /* ハンバーガーボタンを表示 */
+  .menu-toggle {
+    display: block;
+  }
+  
+  /* デスクトップのCTAボタンを非表示 */
+  .header-cta {
+    display: none;
+  }
+  
+  /* ナビゲーションメニューを非表示（デフォルト） */
+  .nav {
+    position: absolute;
+    top: 100%;                       /* ヘッダーの下から表示 */
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 0;                   /* 閉じている時は高さ0 */
+    overflow: hidden;
+    background: rgba(15, 15, 15, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 0;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    z-index: 999;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* メニューが開いている時 */
+  .nav.open {
+    max-height: 400px;               /* 開いている時は高さを設定 */
+    padding: 20px 0;
+  }
+  
+  /* ナビゲーションリンクを縦並びに */
+  .nav-links {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 15px 0;
+    font-size: 1rem;
+    width: 100%;
+    transition: color 0.3s, padding-left 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: var(--accent-gold);
+    padding-left: 10px;
+  }
+  
+  /* オーバーレイは削除（上から下のドロップダウンなので不要） */
+}

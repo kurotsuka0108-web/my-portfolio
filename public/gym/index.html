@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- ============================================
+メタ情報・基本設定
+============================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANTAGE GYM | 理想を超えろ</title>
+    
+<!-- ============================================
+フォント読み込み（Google Fonts）
+- Montserrat: 英語見出し用
+- Noto Sans JP: 日本語本文用
+============================================ -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+<!-- ============================================
+外部CSSファイル読み込み
+- base.css: ベーススタイル（変数、リセット、ヘッダー）
+- main.css: メインスタイル（ヒーロー、料金、フォーム、フッター）
+============================================ -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<!-- ============================================
+ヘッダー（ロゴ・ナビゲーション）
+固定表示され、スクロール時に背景が変化します
+============================================ -->
+    <header id="header">
+        <div class="container nav-container">
+<!-- ロゴ部分
+テキストロゴの場合: <div class="logo">VANTAGE</div>
+画像ロゴの場合: <img src="images/logo.png" alt="VANTAGE" class="logo">
+-->
+            <div class="logo">VANTAGE</div>
+            
+<!-- ナビゲーションメニュー
+リンク先は各セクションのidと対応させてください
+-->
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#plans">PLAN</a></li>
+                    <li><a href="#features">FEATURES</a></li>
+                    <li><a href="#contact">ACCESS</a></li>
+                </ul>
+            </nav>
+            
+<!-- ヘッダーのCTAボタン（無料体験へのリンク） -->
+            <a href="#trial" class="header-cta">無料体験</a>
+            
+<!-- ハンバーガーメニューボタン（モバイル用） -->
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                <span class="menu-toggle-icon">☰</span>
+            </button>
+        </div>
+    </header>
+
+<!-- ============================================
+ヒーローセクション（トップビュー）
+ページの最初に表示されるメインセクション
+背景画像を追加する場合は、main.cssの.heroにbackground-imageを設定
+============================================ -->
+    <section class="hero">
+<!-- fade-in-upクラス: スクロール時にフェードインアニメーションが適用されます -->
+        <div class="hero-content container fade-in-up">
+<!-- メインキャッチコピー
+<span>タグ内のテキストはゴールド色で表示されます
+-->
+            <h1>UNLEASH<br><span>YOUR POTENTIAL</span></h1>
+            
+<!-- サブキャッチコピー -->
+            <p>洗練された空間で、理想の肉体へ。<br>24時間365日、あなたの挑戦をサポート。</p>
+            
+<!-- CTAボタン（無料体験フォームへのリンク） -->
+            <a href="#trial" class="btn">無料体験を申し込む</a>
+        </div>
+    </section>
+
+<!-- ============================================
+料金プランセクション
+3つのプランをカード形式で表示
+recommendedクラスを追加すると「おすすめ」として強調表示されます
+============================================ -->
+    <section id="plans" class="pricing">
+        <div class="container">
+<!-- セクションタイトル -->
+            <h2 class="section-title fade-in-up">MEMBERSHIP</h2>
+            
+<!-- プランカードのグリッドレイアウト -->
+            <div class="pricing-grid">
+                
+<!-- ============================================
+プラン1: STANDARD
+基本プラン
+============================================ -->
+                <div class="plan-card fade-in-up">
+                    <h3 class="plan-name">STANDARD</h3>
+<!-- 料金: <span>内に単位を記述 -->
+                    <div class="plan-price">¥8,800<span>/月</span></div>
+<!-- プランの特徴リスト -->
+                    <ul class="plan-features">
+                        <li>24時間ジム利用可能</li>
+                        <li>シャワー・ロッカー完備</li>
+                        <li>フリーWi-Fi</li>
+                    </ul>
+<!-- CTAボタン -->
+                    <a href="#trial" class="btn btn-standard">選択する</a>
+                </div>
+
+<!-- ============================================
+プラン2: PREMIUM（おすすめ）
+recommendedクラスで強調表示
+plan-badgeで「MOST POPULAR」バッジを表示
+============================================ -->
+                <div class="plan-card recommended fade-in-up">
+<!-- おすすめバッジ -->
+                    <div class="plan-badge">MOST POPULAR</div>
+                    <h3 class="plan-name">PREMIUM</h3>
+<!-- 料金: ゴールド色で表示 -->
+                    <div class="plan-price plan-price-premium">¥12,000<span>/月</span></div>
+                    <ul class="plan-features">
+                        <li><strong>STANDARDの全機能</strong></li>
+                        <li>専用ラウンジ利用</li>
+                        <li>ウェア・タオル無料レンタル</li>
+                        <li>プロテインドリンク1杯/日 無料</li>
+                    </ul>
+                    <a href="#trial" class="btn btn-premium">今すぐ始める</a>
+                </div>
+
+<!-- ============================================
+プラン3: PERSONAL
+プレミアムプラン
+============================================ -->
+                <div class="plan-card fade-in-up">
+                    <h3 class="plan-name">PERSONAL</h3>
+                    <div class="plan-price">¥45,000<span>/月</span></div>
+                    <ul class="plan-features">
+                        <li><strong>PREMIUMの全機能</strong></li>
+                        <li>月4回のパーソナルトレーニング</li>
+                        <li>食事管理サポート</li>
+                        <li>完全個室利用権</li>
+                    </ul>
+                    <a href="#trial" class="btn btn-standard">選択する</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<!-- ============================================
+無料体験申込フォームセクション
+フォーム送信機能を実装する場合は、formタグにaction属性を追加
+例: <form action="送信先URL" method="POST">
+============================================ -->
+    <section id="trial" class="trial-form-section">
+        <div class="container">
+<!-- セクションタイトル -->
+            <h2 class="section-title section-title-white fade-in-up">START TRIAL</h2>
+            
+<!-- フォームラッパー（ガラスモーフィズム効果） -->
+            <div class="form-wrapper fade-in-up">
+<!-- フォーム説明文 -->
+                <p class="form-description">まずは無料体験で、VANTAGEのクオリティを実感してください。</p>
+                
+<!-- ============================================
+無料体験申込フォーム
+送信機能を追加する場合:
+1. action属性に送信先URLを指定
+2. method属性を指定（通常はPOST）
+3. 各inputにname属性を追加
+4. バックエンドまたはフォーム送信サービスを設定
+============================================ -->
+                <form id="trial-form">
+<!-- お名前入力欄 -->
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="山田 太郎" required>
+                    </div>
+                    
+<!-- メールアドレス入力欄 -->
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="example@vantage.com" required>
+                    </div>
+                    
+<!-- 電話番号入力欄 -->
+                    <div class="form-group">
+                        <label for="tel">電話番号</label>
+                        <input type="tel" id="tel" name="tel" class="form-control" placeholder="090-1234-5678" required>
+                    </div>
+                    
+<!-- 体験希望日時入力欄（日付と時間を別々に選択） -->
+                    <div class="form-group">
+                        <label>体験希望日時</label>
+                        <div class="datetime-group">
+<!-- 日付選択 -->
+                            <div class="datetime-item">
+                                <label for="date" class="datetime-label">日付</label>
+                                <input type="date" id="date" name="date" class="form-control datetime-input" required>
+                            </div>
+<!-- 時間選択 -->
+                            <div class="datetime-item">
+                                <label for="time" class="datetime-label">時間</label>
+                                <input type="time" id="time" name="time" class="form-control datetime-input" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+<!-- 送信ボタン -->
+                    <button type="submit" class="btn btn-submit">無料で申し込む</button>
+                </form>
+            
+            </div>
+        </div>
+    </section>
+
+<!-- ============================================
+フッター（店舗情報・お問い合わせ）
+連絡先、営業時間、コンセプトなどを表示
+============================================ -->
+    <footer id="contact">
+        <div class="container">
+<!-- フッターコンテンツ（3カラムレイアウト） -->
+            <div class="footer-content">
+<!-- ============================================
+カラム1: ジムのコンセプト・紹介文
+============================================ -->
+                <div class="footer-info">
+                    <h4>VANTAGE GYM</h4>
+                    <p class="footer-description">
+                        上質な空間と最新のマシン。<br>
+                        ここは、選ばれた大人のためのフィットネス空間。
+                    </p>
+                </div>
+                
+<!-- ============================================
+カラム2: 連絡先情報
+住所、電話番号、メールアドレス
+============================================ -->
+                <div class="footer-info">
+                    <h4>CONTACT</h4>
+                    <div class="contact-item">📍 東京都港区南青山 1-2-3</div>
+                    <div class="contact-item">📞 03-1234-5678</div>
+                    <div class="contact-item">✉️ info@vantage-gym.jp</div>
+                </div>
+                
+<!-- ============================================
+カラム3: 営業時間
+============================================ -->
+                <div class="footer-info">
+                    <h4>HOURS</h4>
+                    <div class="contact-item">GYM AREA: 24 Hours</div>
+                    <div class="contact-item">STAFF: 10:00 - 20:00</div>
+                </div>
+            </div>
+            
+<!-- コピーライト（年はJavaScriptで自動表示） -->
+            <div class="copyright">
+                &copy; <span id="year"></span> VANTAGE GYM All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+<!-- ============================================
+外部JavaScriptファイル読み込み
+script.js: スクロール効果、フェードイン、スムーズスクロール等
+============================================ -->
+    <script src="script.js"></script>
+</body>
+</html>
