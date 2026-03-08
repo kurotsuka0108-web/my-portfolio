@@ -16,8 +16,21 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Full Stack Engineer",
-  description: "Modern portfolio website showcasing full-stack engineering projects and skills",
+  title: "下園 司 | ポートフォリオ",
+  description: "下園 司のポートフォリオサイト。Web開発の作品やスキルを紹介しています。",
+  openGraph: {
+    title: "下園 司 | ポートフォリオ",
+    description: "下園 司のポートフォリオサイト。Web開発の作品やスキルを紹介しています。",
+    images: [{ url: "/ogp.png", width: 1200, height: 630 }],
+    type: "website",
+    locale: "ja_JP",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "下園 司 | ポートフォリオ",
+    description: "下園 司のポートフォリオサイト。Web開発の作品やスキルを紹介しています。",
+    images: ["/ogp.png"],
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased relative`}
       >

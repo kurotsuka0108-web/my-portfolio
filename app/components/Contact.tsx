@@ -4,12 +4,13 @@
  * Contact - お問い合わせフォームセクション
  *
  * ・お名前・メール・メッセージの入力フォーム
- * ・送信時はアラート表示＋フォームリセット（※実際の送信処理は未実装）
+ * ・EmailJSを使ってメール送信
  */
 
 import { motion, useInView } from "framer-motion";
 import { useState, useRef } from "react";
 import { Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -22,12 +23,30 @@ export default function Contact() {
     message: "",
   });
 
-  // フォーム送信時の処理: デフォルトの送信動作を防ぎ、アラートを表示してフォームをリセット
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSending, setIsSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("お問い合わせありがとうございます！後日ご連絡いたします。");
-    setFormData({ name: "", email: "", message: "" });
+    setIsSending(true);
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      alert("お問い合わせありがとうございます！後日ご連絡いたします。");
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      alert("送信に失敗しました。時間をおいて再度お試しください。");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   // 入力フィールドの値が変更されたときに呼ばれる関数: フォームデータを更新
@@ -142,12 +161,13 @@ export default function Contact() {
 
             <motion.button
               type="submit"
-              className="w-full px-8 py-4 bg-indigo-500 hover:bg-indigo-600 text-white rounded-3xl text-base transition-all duration-300 font-medium flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={isSending}
+              className="w-full px-8 py-4 bg-indigo-500 hover:bg-indigo-600 disabled:bg-indigo-500/50 disabled:cursor-not-allowed text-white rounded-3xl text-base transition-all duration-300 font-medium flex items-center justify-center gap-2"
+              whileHover={isSending ? {} : { scale: 1.02 }}
+              whileTap={isSending ? {} : { scale: 0.98 }}
             >
               <Send className="w-5 h-5" />
-              送信する
+              {isSending ? "送信中..." : "送信する"}
             </motion.button>
           </div>
         </motion.form>
