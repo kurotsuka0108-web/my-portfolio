@@ -157,7 +157,7 @@ export default function BentoGrid() {
             );
           })}
 
-          {/* 実績カード（プロジェクト数・経験年数・満足度） */}
+          {/* 実績カード（大切にしている価値観） */}
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -175,6 +175,7 @@ export default function BentoGrid() {
 
           {/* 連絡先カード（GitHub, Twitter 等へのリンク） */}
           <motion.div
+            id="skills"
             className="md:col-span-2 bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6"
             variants={itemVariants}
           >
