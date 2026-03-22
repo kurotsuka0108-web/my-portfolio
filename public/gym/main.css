@@ -428,8 +428,22 @@ footer {
   }
   
   /* フォーム */
+  .trial-form-section {
+    padding: 60px 15px;
+  }
+
   .form-wrapper {
     padding: 30px 20px;
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-control,
+  .datetime-input {
+    max-width: 100%;
+    min-width: 0;
+    font-size: 16px;
   }
   
   /* セクションタイトル */
