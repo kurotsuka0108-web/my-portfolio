@@ -283,6 +283,7 @@
 .form-control {
   width: 100%;
   padding: 15px;
+  height: 52px;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid #444;
   color: #fff;
