@@ -16,7 +16,7 @@ export default function Footer() {
         {/* PC：横並び / スマホ：縦並び */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-slate-400 text-sm">
-            &copy; {currentYear} Portfolio. All rights reserved.
+            &copy; {currentYear} 下園 司. All rights reserved.
           </div>
           <div className="flex gap-6">
             <Link
