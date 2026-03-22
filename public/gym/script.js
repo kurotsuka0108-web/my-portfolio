@@ -160,44 +160,15 @@ document.addEventListener('DOMContentLoaded', function () {
   */
 
   // ============================================
-  // 機能7: フォーム送信処理（オプション）
-  // フォーム送信機能を実装する場合は、以下のコードを有効化してください
+  // 機能7: フォーム送信処理
   // ============================================
-  /*
   var trialForm = document.getElementById('trial-form');
   if (trialForm) {
     trialForm.addEventListener('submit', function (e) {
-      e.preventDefault(); // デフォルトの送信をキャンセル
-      
-      // 日付と時間を結合
-      var date = document.getElementById('date').value;
-      var time = document.getElementById('time').value;
-      var datetime = date + 'T' + time;
-      
-      // フォームデータを取得
-      var formData = new FormData(trialForm);
-      formData.set('datetime', datetime); // 結合した日時を設定
-      
-      // ここでフォームデータを送信
-      // 例: fetch APIを使用
-      // fetch('送信先URL', {
-      //   method: 'POST',
-      //   body: formData
-      // })
-      // .then(response => response.json())
-      // .then(data => {
-      //   alert('送信が完了しました！');
-      //   trialForm.reset();
-      // })
-      // .catch(error => {
-      //   alert('エラーが発生しました。もう一度お試しください。');
-      // });
-      
-      // デバッグ用: フォームデータをコンソールに表示
-      console.log('フォームデータ:', Object.fromEntries(formData));
-      console.log('結合された日時:', datetime);
+      e.preventDefault();
+      alert('お申し込みありがとうございます！\n後日スタッフよりご連絡いたします。');
+      trialForm.reset();
     });
   }
-  */
 
 });
