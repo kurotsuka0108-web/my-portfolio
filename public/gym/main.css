@@ -439,11 +439,23 @@ footer {
     box-sizing: border-box;
   }
 
-  .form-control,
-  .datetime-input {
+  .form-group,
+  .datetime-item,
+  .datetime-group {
     max-width: 100%;
-    min-width: 0;
+    overflow: hidden;
+  }
+
+  .form-control,
+  .datetime-input,
+  input[type="date"],
+  input[type="time"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
     font-size: 16px;
+    -webkit-appearance: none;
+    appearance: none;
   }
   
   /* セクションタイトル */
