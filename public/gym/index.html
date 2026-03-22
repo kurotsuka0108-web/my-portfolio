@@ -192,21 +192,16 @@ plan-badgeで「MOST POPULAR」バッジを表示
                         <input type="tel" id="tel" name="tel" class="form-control" placeholder="090-1234-5678" required>
                     </div>
                     
-<!-- 体験希望日時入力欄（日付と時間を別々に選択） -->
+<!-- 体験希望日付 -->
                     <div class="form-group">
-                        <label>体験希望日時</label>
-                        <div class="datetime-group">
-<!-- 日付選択 -->
-                            <div class="datetime-item">
-                                <label for="date" class="datetime-label">日付</label>
-                                <input type="date" id="date" name="date" class="form-control datetime-input" required>
-                            </div>
-<!-- 時間選択 -->
-                            <div class="datetime-item">
-                                <label for="time" class="datetime-label">時間</label>
-                                <input type="time" id="time" name="time" class="form-control datetime-input" required>
-                            </div>
-                        </div>
+                        <label for="date">体験希望日</label>
+                        <input type="date" id="date" name="date" class="form-control" required>
+                    </div>
+
+<!-- 体験希望時間 -->
+                    <div class="form-group">
+                        <label for="time">体験希望時間</label>
+                        <input type="time" id="time" name="time" class="form-control" required>
                     </div>
                     
 <!-- 送信ボタン -->
