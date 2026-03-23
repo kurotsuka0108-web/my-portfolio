@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import MouseGlow from "./components/MouseGlow";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -45,6 +46,7 @@ export default function RootLayout({
       >
         <MouseGlow />
         <div className="relative z-10">{children}</div>
+        <Analytics />
       </body>
     </html>
   );
