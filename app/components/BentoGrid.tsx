@@ -3,26 +3,24 @@
 /**
  * BentoGrid - 「主な作品」セクション（ベントボックス風レイアウト）
  *
- * ・メインプロジェクト、実績、連絡先、スキル、趣味をカードで表示
- * ・追加作品（VANTAGE GYM 等）へのリンクあり
+ * ・メインプロジェクト（kura eyelash / VANTAGE GYM 等）、実績、連絡先、スキル誘導、趣味をカードで表示
+ * ・スキルの詳細は SkillsSection（#skills）へ誘導
  * ・画面に入ったらカードが順番にスライドイン（Stagger アニメーション）
  */
 
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Github,
   Linkedin,
   Mail,
-  Code,
-  Database,
-  Smartphone,
-  Globe,
   Dumbbell,
   Flame,
   Waves,
   Film,
   Wind,
+  Sparkles,
 } from "lucide-react";
 
 export default function BentoGrid() {
@@ -55,19 +53,28 @@ export default function BentoGrid() {
     },
   };
 
-  // 作品データ
+  // 作品データ（外部は新規タブ。ローカル静的ページは同一タブ）
   const additionalProjects = [
+    {
+      title: "kura eyelash",
+      description:
+        "名古屋・栄のプライベートまつ毛サロン公式サイト。6ページ構成、独自ドメイン、Search Console / GA4 連携。",
+      tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
+      image: "bg-gradient-to-br from-rose-800/90 to-amber-900/90",
+      icon: Sparkles,
+      href: "https://kura-eyelash.com",
+      external: true,
+    },
     {
       title: "VANTAGE GYM",
       description: "ジムのランディングページ。レスポンシブデザインとスムーズなアニメーションを実装",
       tech: ["HTML", "CSS", "JavaScript"],
       image: "bg-gradient-to-br from-orange-500 to-red-600",
       icon: Dumbbell,
-      href: "/gym/index.html", // publicフォルダ内のファイル
+      href: "/gym/index.html",
+      external: false,
     },
   ];
-
-  // 実績データ
   const stats = [
     { number: "Logic First", label: "仕組みから考える" },
     { number: "Craft with Care", label: "丁寧なモノづくり" },
@@ -79,14 +86,6 @@ export default function BentoGrid() {
     { icon: Github, href: "https://github.com/kurotsuka0108-web", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/tsukasa-shimozono-32891b3b1/", label: "LinkedIn" },
     { icon: Mail, href: "mailto:kurotsuka0108@gmail.com", label: "Email" },
-  ];
-
-  // スキルデータ
-  const skills = [
-    { icon: Code, name: "フロントエンド", tech: ["React", "Next.js", "TypeScript"] },
-    { icon: Database, name: "バックエンド", tech: ["Node.js", "PostgreSQL", "MongoDB"] },
-    { icon: Smartphone, name: "モバイル", tech: ["React Native", "Flutter"] },
-    { icon: Globe, name: "DevOps", tech: ["AWS", "Docker", "CI/CD"] },
   ];
 
   // 趣味データ
@@ -121,14 +120,14 @@ export default function BentoGrid() {
           animate={isInView ? "visible" : "hidden"}
         >
           {/* VANTAGE GYM カード（2列2行・先頭に表示） */}
-          {additionalProjects.map((project, index) => {
+          {additionalProjects.map((project) => {
             const Icon = project.icon;
             return (
               <motion.a
-                key={index}
+                key={project.title}
                 href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={project.external ? "_blank" : undefined}
+                rel={project.external ? "noopener noreferrer" : undefined}
                 className="md:col-span-2 md:row-span-2 bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 overflow-hidden group cursor-pointer block"
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
@@ -175,7 +174,6 @@ export default function BentoGrid() {
 
           {/* 連絡先カード（GitHub, Twitter 等へのリンク） */}
           <motion.div
-            id="skills"
             className="md:col-span-2 bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6"
             variants={itemVariants}
           >
@@ -203,45 +201,22 @@ export default function BentoGrid() {
             </div>
           </motion.div>
 
-          {/* スキルカード（フロント・バック・モバイル・DevOps） */}
           <motion.div
-            className="md:row-span-2 bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6"
+            className="md:row-span-2 bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 flex flex-col justify-center"
             variants={itemVariants}
           >
-            <h3 className="text-xl font-semibold text-slate-50 mb-6">
-              スキル
+            <h3 className="text-xl font-semibold text-slate-50 mb-3">
+              スキル詳細
             </h3>
-            <div className="space-y-6">
-              {skills.map((skill, index) => {
-                const Icon = skill.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className="group"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon className="w-5 h-5 text-indigo-400" />
-                      <span className="text-slate-300 font-medium">
-                        {skill.name}
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {skill.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-2 py-1 bg-slate-800/50 text-slate-400 text-xs rounded-lg"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+              フロントエンド実装を中心に、公開・計測・SEO まで。カテゴリ別の技術スタックは専用セクションでまとめています。
+            </p>
+            <Link
+              href="#skills"
+              className="inline-flex items-center justify-center rounded-2xl bg-indigo-500/15 border border-indigo-500/40 text-indigo-300 px-4 py-3 text-sm font-medium hover:bg-indigo-500/25 transition-colors text-center"
+            >
+              スキル &amp; スタックを見る
+            </Link>
           </motion.div>
 
           {/* 趣味カード（筋トレ・サウナ等） */}

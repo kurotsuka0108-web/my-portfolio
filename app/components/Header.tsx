@@ -31,6 +31,7 @@ export default function Header() {
   // ナビゲーションメニューの項目（#〜 でページ内のセクションにスクロール）
   const navItems = [
     { name: "Home", href: "#home" },
+    { name: "注目", href: "#featured" },
     { name: "Works", href: "#works" },
     { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" },
