@@ -9,6 +9,7 @@
  */
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
@@ -61,6 +62,7 @@ export default function BentoGrid() {
         "名古屋・栄のプライベートまつ毛サロン公式サイト。6ページ構成、独自ドメイン、Search Console / GA4 連携。",
       tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
       image: "bg-gradient-to-br from-rose-800/90 to-amber-900/90",
+      screenshot: "/works/kura-eyelash-desktop.png",
       icon: Sparkles,
       href: "https://kura-eyelash.com",
       external: true,
@@ -133,9 +135,21 @@ export default function BentoGrid() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className={`${project.image} h-48 rounded-2xl mb-6 flex items-center justify-center`}>
-                  <Icon className="w-16 h-16 text-white opacity-80" />
-                </div>
+                {"screenshot" in project && project.screenshot ? (
+                  <div className="relative h-48 rounded-2xl mb-6 overflow-hidden border border-slate-700/50 bg-slate-950">
+                    <Image
+                      src={project.screenshot}
+                      alt={`${project.title} のスクリーンショット`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 560px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                ) : (
+                  <div className={`${project.image} h-48 rounded-2xl mb-6 flex items-center justify-center`}>
+                    <Icon className="w-16 h-16 text-white opacity-80" />
+                  </div>
+                )}
                 <h3 className="text-2xl font-bold text-slate-50 mb-3">
                   {project.title}
                 </h3>

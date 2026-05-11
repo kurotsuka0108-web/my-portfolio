@@ -9,6 +9,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Sparkles } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FeaturedHighlight() {
   const ref = useRef<HTMLElement>(null);
@@ -92,6 +93,38 @@ export default function FeaturedHighlight() {
                 メインの作品一覧へ
               </Link>
             </div>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 border-t border-slate-700/50">
+            <figure className="m-0">
+              <figcaption className="text-xs text-slate-500 mb-3 tracking-wider">
+                デスクトップ（トップ）
+              </figcaption>
+              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-slate-600/40 shadow-lg shadow-black/30 bg-slate-900">
+                <Image
+                  src="/works/kura-eyelash-desktop.png"
+                  alt="kura eyelash 公式サイトのトップページ（デスクトップ表示）"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+            </figure>
+            <figure className="m-0 flex flex-col items-center lg:items-stretch">
+              <figcaption className="text-xs text-slate-500 mb-3 tracking-wider w-full text-center lg:text-left">
+                モバイル（トップ）
+              </figcaption>
+              <div className="relative w-full max-w-[260px] mx-auto lg:mx-0 aspect-[9/16] max-h-[420px] rounded-[2rem] overflow-hidden border border-slate-600/40 shadow-lg shadow-black/30 bg-slate-900">
+                <Image
+                  src="/works/kura-eyelash-mobile.png"
+                  alt="kura eyelash 公式サイトのトップページ（スマートフォン表示）"
+                  fill
+                  sizes="260px"
+                  className="object-cover object-top"
+                />
+              </div>
+            </figure>
           </div>
         </motion.div>
       </div>
