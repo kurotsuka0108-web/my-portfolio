@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * FeaturedHighlight - 注目の制作実績（ケーススタディへの導線）
+ * FeaturedHighlight - 制作実績（kura eyelash の紹介）
  * kura eyelash を前面に表示し、外部サイトへリンク
  */
 
@@ -31,7 +31,7 @@ export default function FeaturedHighlight() {
             Case Study
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-50 mb-4">
-            注目の制作実績
+            制作実績
           </h2>
           <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             実運用中のコーポレートサイト。デザインシステム・レスポンシブ・SEO・計測まで一貫して対応しました。

@@ -1,42 +1,54 @@
 "use client";
 
 /**
- * SkillsSection - 技術スタックをフル幅で整理（ナビ #skills の着地先）
+ * SkillsSection - 作品で使用した技術の整理（ナビ #skills の着地先）
+ * このポートフォリオ、kura eyelash、VANTAGE GYM で実際に使ったスタックに限定
  */
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  Code2,
-  Layers,
-  Gauge,
-  Box,
-} from "lucide-react";
+import { Code2, LayoutTemplate, Rocket, Plug } from "lucide-react";
 
 const skillGroups = [
   {
     icon: Code2,
-    title: "フロントエンド",
-    desc: "コンポーネント設計、レスポンシブ、軽いアニメーションまで一貫して実装します。",
-    tags: ["React", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    title: "フロントエンド（Next.js 系）",
+    desc:
+      "このポートフォリオサイトおよび kura eyelash の公式サイトで使用。コンポーネント設計・レスポンシブ・アニメーションまで対応。",
+    tags: [
+      "Next.js（App Router）",
+      "React",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Framer Motion",
+      "Lucide React",
+    ],
   },
   {
-    icon: Layers,
-    title: "公開・運用",
-    desc: "ドメイン、デプロイ、計測、検索向けの土台づくり。",
-    tags: ["Vercel", "Google Analytics 4", "Search Console", "環境変数 / SEO 基盤"],
+    icon: LayoutTemplate,
+    title: "静的 LP（VANTAGE GYM）",
+    desc: "ジム向けランディングページ（public/gym）で使用。マークアップとスタイル、インタラクションを素の JS で実装。",
+    tags: ["HTML", "CSS", "JavaScript"],
   },
   {
-    icon: Gauge,
-    title: "バックエンド（学習・経験）",
-    desc: "API の考え方やデータの流れを理解するため、小規模な実装経験があります。",
-    tags: ["Node.js", "REST の理解", "PostgreSQL / MongoDB（学習）"],
+    icon: Rocket,
+    title: "公開・SEO・計測",
+    desc:
+      "本番デプロイと、検索・シェア・分析のための設定。kura eyelash とこのサイトで利用した範囲に合わせています。",
+    tags: [
+      "Vercel",
+      "メタデータ・OGP",
+      "Google Analytics 4",
+      "Vercel Analytics",
+      "Google Search Console",
+      "sitemap / robots.txt",
+    ],
   },
   {
-    icon: Box,
-    title: "その他",
-    desc: "チーム開発を見据えた運用まわり。",
-    tags: ["Git / GitHub", "ESLint", "レスポンシブ・アクセシビリティ意識"],
+    icon: Plug,
+    title: "連携・開発環境",
+    desc: "問い合わせ送信やリポジトリ運用など、作品制作で使った周辺ツール。",
+    tags: ["EmailJS", "環境変数（.env）", "Git / GitHub"],
   },
 ];
 
@@ -64,7 +76,7 @@ export default function SkillsSection() {
             スキル & スタック
           </h2>
           <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
-            案件や学習を通じて身につけた技術を、用途別に整理しています。
+            掲載している制作物で実際に使用した技術だけをまとめています。
           </p>
         </motion.div>
 
