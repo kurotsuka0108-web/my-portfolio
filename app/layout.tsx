@@ -16,12 +16,18 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+  "https://my-portfolio-seven-umber-56.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "下園 司 | ポートフォリオ",
   description: "下園 司のポートフォリオサイト。Web開発の作品やスキルを紹介しています。",
   openGraph: {
     title: "下園 司 | ポートフォリオ",
     description: "下園 司のポートフォリオサイト。Web開発の作品やスキルを紹介しています。",
+    url: siteUrl,
     images: [{ url: "/ogp.png", width: 1200, height: 630 }],
     type: "website",
     locale: "ja_JP",
