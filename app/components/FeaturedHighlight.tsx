@@ -39,12 +39,8 @@ export default function FeaturedHighlight() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, delay: 0.1 }}
-          className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-rose-950/50 via-slate-900/90 to-amber-950/30 p-8 md:p-10 shadow-[0_0_0_1px_rgba(99,102,241,0.08)]"
-        >
+        {/* カード内はフェードしない（プレビューiframe・HMR遅れでも本文が確実に見えるように） */}
+        <div className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-rose-950/50 via-slate-900/90 to-amber-950/30 p-8 md:p-10 shadow-[0_0_0_1px_rgba(99,102,241,0.08)]">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-2 text-rose-300/90 text-sm font-medium mb-3">
@@ -75,6 +71,54 @@ export default function FeaturedHighlight() {
                   </span>
                 ))}
               </div>
+
+              {/* ケーススタディ — 応募資料・面接でもそのまま使える粒度 */}
+              <dl className="mt-8 space-y-5 text-sm md:text-base border-t border-slate-600/35 pt-8">
+                <div>
+                  <dt className="text-indigo-400 font-semibold mb-2">役割</dt>
+                  <dd className="text-slate-400 leading-relaxed">
+                    要件整理から実装〜公開までのフルスタックフロント（企画ヒアリング、情報設計・6ページのワイヤー相当整理、コンポーネント設計、レスポンシブ実装、デプロイ、ドメイン・DNS、Search
+                    Console / GA4／OGP／ファビコンのセットアップ）。
+                    <span className="text-slate-500">
+                      {" "}
+                      クライアントは親族運営のため、運用側の細かな要望に随時フィードバックしながら改善を重ねました。
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-indigo-400 font-semibold mb-2">制作期間</dt>
+                  <dd className="text-slate-400 leading-relaxed">
+                    <strong className="text-slate-300 font-medium">初版の初回公開まで 約 3〜4週間</strong>
+                    （副業ペースでの断続開発）。公開後もメニューやレイアウト変更、ブランド名変更・独自ドメイン取得、計測まわりの追加など複数フェーズで改善を続行。
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-indigo-400 font-semibold mb-2">苦労・学び（抜粋）</dt>
+                  <dd className="text-slate-400 leading-relaxed space-y-2">
+                    <p>
+                      • <strong className="text-slate-300 font-medium">多端末レイアウト</strong>
+                      メニューカードなど、情報量・画像サイズ・アニメーションのバランスをスマホで崩さないように何度も調整。
+                      長文説明はクリックで展開できるようし、一覧の視認性を保ちました。
+                    </p>
+                    <p>
+                      • <strong className="text-slate-300 font-medium">インフラ周り・SEO の実務経験</strong>
+                      地図の埋め込みでピンや表示ズレがあり、クエリ／座標の切り替えで解消。sitemap /
+                      robots、canonical、環境変数による本番 URL
+                      とローカルの切り替えなど、運用視点での仕込みまで行いました。
+                    </p>
+                    <p>
+                      • Web 制作会社（CMS・サイト運用）
+                      と向き合ううえでの示唆として、今後は{" "}
+                      <strong className="text-slate-300 font-medium">
+                        「クライアントが自分で編集できる導線」
+                      </strong>
+                      と{" "}
+                      <strong className="text-slate-300 font-medium">「開発者側のコードの両立」</strong>
+                      にも強い関心があります（自社開発 CMS の環境での学びを積みたい）。
+                    </p>
+                  </dd>
+                </div>
+              </dl>
             </div>
             <div className="flex flex-col items-stretch md:items-end gap-3 shrink-0">
               <a
@@ -126,7 +170,7 @@ export default function FeaturedHighlight() {
               </div>
             </figure>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
