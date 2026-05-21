@@ -85,10 +85,10 @@ export default function Hero() {
                 お問い合わせ
               </a>
               <a
-                href="#works"
+                href="#featured"
                 className="px-8 py-3 border border-slate-700 hover:border-indigo-500 text-slate-50 rounded-3xl text-base transition-all duration-300 font-medium"
               >
-                作品を見る
+                制作実績を見る
               </a>
             </motion.div>
           </motion.div>
